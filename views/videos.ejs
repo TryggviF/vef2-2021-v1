@@ -1,0 +1,32 @@
+<%- include('header') -%>
+<main>
+<h1>Fræðslumyndbandaleigan</h1>
+<div class = "grid">
+    
+    <% data.categories.forEach((category) => { %>
+        <div class ="row">
+        <h2 class = "col"><%= category.title %> </h2>
+        
+        <% category.videos.forEach((videoID) => { %>
+            <div class = "col col-4 col-12-sm video-card">
+                <a href="<%= "videos/"+videoID %> ">
+                    <div class = "video-thumbnail">
+                        <div class = "video-image">
+                            <img src="<%= data.videos[videoID-1].poster %>" alt="">
+                        </div>
+                        <div class = "video-timestamp"><%= locals.timeStamp(data.videos[videoID-1].duration) %> </div>
+                    </div>
+                    <div class = "video-info">
+                        <h3 class = "video-name"><%= data.videos[videoID-1].title %> </h3>
+                        <p class = "video-uploadtime"><%= locals.formatTime(data.videos[videoID-1].created) %> </p>
+
+                    </div>
+                </a>
+            </div>
+        <% }); %>
+    </div> 
+        <hr class = "video-linebrake">
+    <% }); %> 
+</div>
+</main>
+<%- include('footer') %> 

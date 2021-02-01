@@ -1,0 +1,44 @@
+{
+  "name": "vef2-2021-v1",
+  "version": "1.0.0",
+  "description": "[Kynning í fyrirlestri](https://youtu.be/pCEHnurbuCU).",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test:eslint": "eslint ./src/videos.js ./app.js --fix",
+    "test:stylelint": "stylelint ./src/styles/*.scss --syntax scss",
+    "test": "concurrently npm:test:*",
+    "lint": "stylelint ./**/*.scss",
+    "build:sass": "node-sass --source-map-embed ./src/styles/styles.scss ./public/styles.css",
+    "build": "concurrently npm:build:*",
+    "dev:sass": "node-sass --source-map-embed --watch --recursive ./src/styles/styles.scss ./public/styles.css",
+    "dev": "concurrently npm:dev:*",
+    "start": "nodemon app.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TryggviF/vef2-2021-v1.git"
+  },
+  "author": "Tryggvi Freyr Sigureirsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TryggviF/vef2-2021-v1/issues"
+  },
+  "homepage": "https://github.com/TryggviF/vef2-2021-v1#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.7",
+    "sass": "^1.32.5",
+    "stylelint": "^13.9.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
