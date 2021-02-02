@@ -10,9 +10,8 @@
     "lint": "stylelint ./**/*.scss",
     "build:sass": "node-sass --source-map-embed ./src/styles/styles.scss ./public/styles.css",
     "build": "concurrently npm:build:*",
-    "dev:sass": "node-sass --source-map-embed --watch --recursive ./src/styles/styles.scss ./public/styles.css",
-    "dev": "concurrently npm:dev:*",
-    "start": "nodemon ./src/app.mjs"
+    "dev": "nodemon ./src/app.js",
+    "start":"node ./src/app.js "
   },
   "repository": {
     "type": "git",

@@ -27,15 +27,16 @@ app.get('/videos/:id?', async (req, res, next) => {
     console.log(id);
     if (!data.videos[id]) {
       next();
+    } else {
+      res.render('video-play', { title: 'Myndband', data, id });
     }
-    res.render('video-play', { title: 'Myndband', data, id });
   } catch (e) {
     console.error(e);
   }
 });
 
 function notFoundHandler(req, res) {
-  res.status(404).send('<img src = "https://http.cat/404">');
+  res.status(404).send('<img src = "https://http.cat/404"><<iframe width="1280" height="720" src="https://www.youtube.com/embed/TKvjEQXKeec?start=21" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 }
 
 function errorHandler(err, req, res) {
