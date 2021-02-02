@@ -2,10 +2,9 @@
   "name": "vef2-2021-v1",
   "version": "1.0.0",
   "description": "[Kynning í fyrirlestri](https://youtu.be/pCEHnurbuCU).",
-  "main": "app.js",
-  "type": "module",
+  "main": "./src/app.js",
   "scripts": {
-    "test:eslint": "eslint ./src/videos.js ./app.js --fix",
+    "test:eslint": "eslint ./src/*.js --fix",
     "test:stylelint": "stylelint ./src/styles/*.scss --syntax scss",
     "test": "concurrently npm:test:*",
     "lint": "stylelint ./**/*.scss",
@@ -13,7 +12,7 @@
     "build": "concurrently npm:build:*",
     "dev:sass": "node-sass --source-map-embed --watch --recursive ./src/styles/styles.scss ./public/styles.css",
     "dev": "concurrently npm:dev:*",
-    "start": "nodemon app.mjs"
+    "start": "nodemon ./src/app.mjs"
   },
   "repository": {
     "type": "git",

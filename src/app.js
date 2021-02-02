@@ -1,12 +1,14 @@
-import express from 'express';
 /* eslint-disable */
-// disable á eslint því import verður að vera á þessu formi
-import { fetchData, formatTime, timeStamp } from './src/videos.js';
+import express from 'express';
+// disable á eslint því import verður að vera á þessu formi (.js)
+import { fetchData, formatTime, timeStamp } from './videos.js';
 /* eslint-enable */
+/* eslint-disable no-console */
 
 const app = express();
 app.use(express.static('public'));
 // const viewsPath = new URL('./views', import.meta.url).pathname;
+// viewsPath var ekki að virka
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
@@ -18,11 +20,14 @@ app.get('/', async (req, res) => {
   res.render('videos', { title: 'Forsíða', data });
 });
 
-app.get('/videos/:id?', async (req, res) => {
+app.get('/videos/:id?', async (req, res, next) => {
   try {
     const id = req.params.id - 1;
     const data = await fetchData();
     console.log(id);
+    if (!data.videos[id]) {
+      next();
+    }
     res.render('video-play', { title: 'Myndband', data, id });
   } catch (e) {
     console.error(e);
@@ -30,7 +35,7 @@ app.get('/videos/:id?', async (req, res) => {
 });
 
 function notFoundHandler(req, res) {
-  res.status(404).send('404 Not Found');
+  res.status(404).send('<img src = "https://http.cat/404">');
 }
 
 function errorHandler(err, req, res) {

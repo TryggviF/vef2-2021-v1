@@ -1,11 +1,16 @@
-import { readFile } from 'fs';
-
+/* eslint-disable */
+import { readFile } from 'fs/promises';
+/* eslint-enable */
+// Disablea eslint fyrir import, þar sem það VERÐUR að vera svona
+// Því annars er readFile ekki async (kýs að fara þessa leið frekar en utils)
 /**
  * Format a timestamp as dd.mm.yyyy hh:mm:ss e.g. "01.11.2020 12:00:00".
  *
  * @param {number} timestamp Unix timestamp to format
  * @returns {string} Formatted string.
  */
+
+/* eslint-disable no-console */
 
 export async function fetchData() {
   try {
